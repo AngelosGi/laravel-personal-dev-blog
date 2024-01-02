@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str; 
 
 class PostResource extends Resource
 {
@@ -25,7 +26,11 @@ class PostResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(2048),
+                    ->maxLength(2048)
+                    ->reactive()
+                    ->afterStateUpdated(function($state, $set) {
+                        $set('slug', Str::slug($state)); 
+                    }),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(2048),
@@ -93,6 +98,7 @@ class PostResource extends Resource
             //
         ];
     }
+
 
     public static function getPages(): array
     {
