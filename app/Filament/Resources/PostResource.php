@@ -7,6 +7,7 @@ use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -29,32 +30,31 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                
                 Section::make()
                     ->schema([
-
-                        
-                        Forms\Components\TextInput::make('title')
-                        ->required()
-                        ->maxLength(2048)
-                        ->reactive()
-                        ->afterStateUpdated(function($state, $set) {
-                            $set('slug', Str::slug($state)); 
-                        }),
-                    Forms\Components\TextInput::make('slug')
-                        ->required()
-                        ->maxLength(2048),
-                    Forms\Components\TextInput::make('thumbnail')
-                        ->maxLength(2048),
-                    Forms\Components\Textarea::make('body')
+                        Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->required()
+                                    ->maxLength(2048)
+                                    ->reactive()
+                                    ->afterStateUpdated(function($state, $set) {
+                                        $set('slug', Str::slug($state)); 
+                                    }),
+                            Forms\Components\TextInput::make('slug')
+                                ->required()
+                                ->maxLength(2048)
+                        ]),
+                    Forms\Components\FileUpload::make('thumbnail'),
+                    Forms\Components\RichEditor::make('body')
                         ->required()
                         ->columnSpanFull(),
                     Forms\Components\Toggle::make('active')
                         ->required(),
                     Forms\Components\DateTimePicker::make('published_at')
                         ->required(),
-                    Forms\Components\Select::make('user_id')
-                        ->relationship('user', 'name')
+                    Forms\Components\Select::make('categories')
+                        ->relationship('categories', 'title')
                         ->required(),
                     ])
                 
