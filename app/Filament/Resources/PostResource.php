@@ -54,6 +54,7 @@ class PostResource extends Resource
                     Forms\Components\DateTimePicker::make('published_at')
                         ->required(),
                     Forms\Components\Select::make('categories')
+                        ->multiple()
                         ->relationship('categories', 'title')
                         ->required(),
                     ])
