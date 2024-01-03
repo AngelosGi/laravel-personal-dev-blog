@@ -54,7 +54,7 @@ class PostResource extends Resource
                     ,Forms\Components\DateTimePicker::make('published_at')
                         ->required(),
                     
-                    ])->columnSpan(8),
+                    ])->columnSpan(9),
                 
                 Section::make()
                 ->schema([
@@ -63,7 +63,7 @@ class PostResource extends Resource
                                 ->multiple()
                                 ->relationship('categories', 'title')
                                 ->required(),
-                ])->columnSpan(4),
+                ])->columnSpan(3),
 
             ])->columns(12);
     } 
@@ -73,12 +73,13 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('thumbnail')
-                    ->searchable(),
+                
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('published_at')
