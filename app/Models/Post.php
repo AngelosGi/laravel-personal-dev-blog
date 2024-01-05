@@ -37,5 +37,13 @@ public function getShortBodyAttribute(): string
     return Str::words(strip_tags($this->body), 30);
 }
 
+public function getThumbnail(){
+    if (str_starts_with($this->thumbnail, 'http')) {
+        return $this->thumbnail;
+    } else {
+        return asset('storage/' . $this->thumbnail);
+    }
+}
+
 
 }
