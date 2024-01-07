@@ -61,7 +61,7 @@
                 Squidink.cc
             </a>
             <p class="text-lg text-gray-600">
-                codeCrafting
+                {{ \App\Models\TextWidget::getTitle('header') }}
             </p>
         </div>
 </header>
