@@ -61,12 +61,12 @@
                 Squidink.cc
             </a>
             <p class="text-lg text-gray-600">
-                Codecrafting
+                codeCrafting
             </p>
         </div>
 </header>
 
-    <!-- Topic Nav -->
+<!-- Topic Nav -->
     <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
         <div class="block sm:hidden">
             <a
@@ -87,7 +87,7 @@
                 <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">asdfgh</a>
             </div>
         </div>
-    </nav>
+</nav>
 
 
     <div class="container mx-auto flex flex-wrap py-6">
@@ -138,7 +138,7 @@
                 <a href="#" class="uppercase px-3">Terms & Conditions</a>
                 <a href="#" class="uppercase px-3">Contact Us</a> -->
             </div>
-            <div class="uppercase pb-6">&copy; -------</div>
+            <div class="uppercase py-6">&copy; -------</div>
         </div>
     </footer>
 
