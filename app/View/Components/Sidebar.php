@@ -28,7 +28,7 @@ class Sidebar extends Component
             ->select('categories.title', 'categories.slug', DB::raw('count(*)as total'))
             ->groupBy('categories.id')
             ->orderByDesc('total')
-            ->limit(5)
+            // ->limit(5)
             ->get();
 
         return view('components.sidebar', compact('categories'));
