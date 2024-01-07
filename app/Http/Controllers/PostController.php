@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,6 +68,19 @@ class PostController extends Controller
 
         return view('post.view', compact('post', 'prev' ,'next' ));
     }
+
+
+    public function byCategory(Category $category)
+    {
+        $posts = $category->posts()
+            ->where('active', '=', 1)
+            ->whereDate('published_at', '<=', Carbon::now()) 
+            ->orderBy('published_at', 'desc')
+            ->paginate(4);
+
+        return view('home', compact('posts'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
