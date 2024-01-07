@@ -19,6 +19,8 @@ class TextWidgetResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Content';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -35,7 +37,7 @@ class TextWidgetResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('active')
                     ->required(),
-            ]);
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
