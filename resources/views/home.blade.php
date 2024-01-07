@@ -10,10 +10,12 @@
     <x-post-item :post="$post"></x-post-item>
     @endforeach
 
-   
+
     {{$posts->onEachSide(1)->links()}}
 
     </section>
+
+    <x-sidebar></x-sidebar>
 
 </x-app-layout>
 
